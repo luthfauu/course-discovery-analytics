@@ -3,9 +3,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CareerStart | Find Your Next Role</title>
-  <meta name="description" content="Explore sample jobs and try a demo recruitment application.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CareerStart | Explore Career Opportunities</title>
+
+  <meta
+    name="description"
+    content="Explore Data Analyst and Business Analyst career opportunities."
+  >
 
   <!-- Google Tag Manager -->
   <script>
@@ -18,91 +23,152 @@
   <!-- End Google Tag Manager -->
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: #1f2937;
-      background: #f4f7fb;
+      background: #f5f7fb;
+      color: #202938;
       line-height: 1.6;
     }
 
     header {
       background: #173b67;
       color: white;
-      padding: 22px 7%;
+      padding: 18px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 10px;
     }
 
-    header h2 { margin: 0; }
+    header h2 {
+      margin: 0;
+      font-size: 23px;
+    }
 
-    main {
-      max-width: 950px;
-      margin: 38px auto;
-      padding: 0 18px;
+    header span {
+      font-size: 14px;
+      color: #e1eaf8;
     }
 
     .hero {
       text-align: center;
-      margin-bottom: 32px;
+      padding: 55px 20px 40px;
+      background: #e8f0fc;
     }
 
-    .hero h1 { font-size: 34px; margin-bottom: 8px; }
+    .hero h1 {
+      margin: 0 0 12px;
+      color: #173b67;
+      font-size: 36px;
+    }
 
-    .hero p, .muted { color: #64748b; }
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #526174;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
 
     .jobs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
 
-    .job, .application {
+    .job-card {
       background: white;
-      padding: 24px;
+      padding: 25px;
       border-radius: 12px;
-      border: 1px solid #e1e7f0;
-      box-shadow: 0 3px 12px #1725540a;
+      border: 1px solid #e1e7ef;
+      box-shadow: 0 4px 14px rgba(25, 45, 75, 0.05);
     }
 
-    .tag {
+    .job-card h3 {
+      margin-top: 0;
+      color: #173b67;
+      font-size: 21px;
+    }
+
+    .job-card p {
+      color: #526174;
+      min-height: 48px;
+    }
+
+    .job-type {
       display: inline-block;
-      background: #e8f0ff;
+      background: #e8f0fc;
       color: #173b67;
       border-radius: 20px;
-      padding: 4px 10px;
-      font-size: 12px;
+      padding: 4px 11px;
+      font-size: 13px;
+      margin-bottom: 12px;
     }
 
     button {
-      background: #1763c6;
-      color: white;
-      border: 0;
+      border: none;
       border-radius: 6px;
-      padding: 11px 18px;
-      cursor: pointer;
+      padding: 12px 18px;
       font-size: 15px;
-      margin-top: 12px;
-    }
-
-    button:hover { background: #124c98; }
-
-    .application { margin-top: 28px; }
-
-    .field { margin-top: 14px; }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    input {
+    .apply-btn,
+    .submit-btn {
+      background: #1769aa;
+      color: white;
+    }
+
+    .apply-btn:hover,
+    .submit-btn:hover {
+      background: #104e82;
+    }
+
+    .application {
+      background: white;
+      margin-top: 32px;
+      padding: 26px;
+      border-radius: 12px;
+      border: 1px solid #e1e7ef;
+    }
+
+    .application h2 {
+      margin-top: 0;
+      color: #173b67;
+    }
+
+    #selected-job {
+      color: #526174;
+      margin-bottom: 20px;
+    }
+
+    .form-field {
+      margin-bottom: 16px;
+    }
+
+    .form-field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .form-field input {
       width: 100%;
       padding: 11px;
       border: 1px solid #cbd5e1;
@@ -110,169 +176,247 @@
       font-size: 15px;
     }
 
-    .note {
-      font-size: 13px;
-      color: #64748b;
+    .form-field input:focus {
+      outline: 2px solid #9cc7f0;
+      border-color: #1769aa;
     }
 
     #success {
       display: none;
-      background: #e7f8ed;
-      padding: 14px;
-      border-radius: 6px;
-      margin-top: 18px;
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      background: #e7f7ed;
+      color: #176536;
+      font-weight: bold;
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 14px 16px;
+      background: #fff8e6;
+      border: 1px solid #f0dfad;
+      border-radius: 8px;
+      color: #6b5726;
+      font-size: 13px;
     }
 
     footer {
       text-align: center;
-      padding: 25px;
-      color: #64748b;
+      padding: 24px 15px;
+      color: #667085;
       font-size: 13px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      header {
+        padding: 16px 20px;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWSMRSR8"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-MWSMRSR8"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+      title="Google Tag Manager"
+    ></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <header>
     <h2>CareerStart</h2>
-    <span>Explore our Career Opportunities</span>
+    <span>Explore opportunities. Build your future.</span>
   </header>
 
+  <section class="hero">
+    <h1>Find Your Next Opportunity</h1>
+    <p>
+      Explore opportunities, discover roles that match your interests,
+      and take the next step in your career.
+    </p>
+  </section>
+
   <main>
-    <section class="hero">
-      <h1>Find Your Next Opportunity</h1>
-      <p>Explore sample roles and try our demo application process.</p>
-    </section>
+    <h2 class="section-title">Open Positions</h2>
 
-    <section class="jobs" aria-label="Job listings">
-      <article class="job">
-        <span class="tag">Entry Level</span>
-        <h3>Data Analyst </h3>
-        <p>Work with data, SQL, spreadsheets and reports to uncover useful insights.</p>
-        <p><strong>Location:</strong> Bengaluru / Remote</p>
-        <button type="button" class="apply-btn"
-          data-job="Data Analyst">Apply Now</button>
+    <section class="jobs" aria-label="Available positions">
+
+      <article class="job-card">
+        <span class="job-type">Analytics</span>
+        <h3>Data Analyst</h3>
+        <p>
+          Work with data to identify trends, prepare reports,
+          and support data-driven decisions.
+        </p>
+        <button
+          type="button"
+          class="apply-btn"
+          data-job="Data Analyst"
+        >
+          Apply Now
+        </button>
       </article>
 
-      <article class="job">
-        <span class="tag">Entry Level</span>
-        <h3>Business Analyst </h3>
-        <p>Help teams understand requirements and improve business processes.</p>
-        <p><strong>Location:</strong> Bengaluru / Hybrid</p>
-        <button type="button" class="apply-btn"
-          data-job="Business Analyst">Apply Now</button>
+      <article class="job-card">
+        <span class="job-type">Business</span>
+        <h3>Business Analyst</h3>
+        <p>
+          Understand business requirements, analyse processes,
+          and help teams improve their solutions.
+        </p>
+        <button
+          type="button"
+          class="apply-btn"
+          data-job="Business Analyst"
+        >
+          Apply Now
+        </button>
       </article>
+
     </section>
 
+    <!-- Application form: hidden until Apply Now is clicked -->
     <section class="application" id="application" hidden>
-      <h2> Application Form</h2>
-      <p id="selected-job"><strong>Selected role:</strong></p>
+      <h2>Application Form</h2>
 
-      <p class="note">
-        This is a public portfolio demo, not a real job application.
-        Use fictional test details only. Details are not saved or sent
-        to a server. Do not enter real personal information.
+      <p id="selected-job">
+        Selected role:
       </p>
 
       <form id="demo-form">
-        <div class="field">
-          <label for="applicant-name">Name </label>
-          <input id="applicant-name" name="applicant_name"
-            type="text" placeholder="Enter your full name"
-            autocomplete="off" required>
+        <div class="form-field">
+          <label for="applicant-name">Name</label>
+          <input
+            type="text"
+            id="applicant-name"
+            name="applicant-name"
+            autocomplete="off"
+            required
+          >
         </div>
 
-        <div class="field">
-          <label for="applicant-email">Email </label>
-          <input id="applicant-email" name="applicant_email"
-            type="email" placeholder="Enter your email id"
-            autocomplete="off" required>
+        <div class="form-field">
+          <label for="applicant-email">Email</label>
+          <input
+            type="email"
+            id="applicant-email"
+            name="applicant-email"
+            autocomplete="off"
+            required
+          >
         </div>
 
-        <div class="field">
+        <div class="form-field">
           <label for="applicant-phone">Contact number</label>
-          <input id="applicant-phone" name="applicant_phone"
-            type="tel" placeholder="Enter your contact number"
-            autocomplete="off" required>
+          <input
+            type="tel"
+            id="applicant-phone"
+            name="applicant-phone"
+            autocomplete="off"
+            required
+          >
         </div>
 
-        <button type="submit">Submit Application</button>
+        <button type="submit" class="submit-btn">
+          Submit Application
+        </button>
       </form>
 
       <div id="success" role="status" aria-live="polite">
-        <strong>Application successful!</strong>
-        <p>Your sample application journey is complete. Thank you.</p>
+        Application successful! Thank you for your interest.
       </div>
     </section>
+
+    <div class="notice">
+      <strong>Portfolio project:</strong> This website demonstrates a
+      sample recruitment and application journey. It is not a real job
+      application. Use fictional test details only. Details are not saved
+      or sent to a server. Do not enter real personal information.
+    </div>
   </main>
 
   <footer>
-    Portfolio project — visitor activity is measured for an analytics demo.
+    CareerStart · Recruitment Website Analytics Portfolio Project
   </footer>
 
   <script>
     window.dataLayer = window.dataLayer || [];
 
+    var selectedJob = '';
 
-  var selectedJob = '';
+    // Event 1: page_view is normally tracked by GA4 configuration.
+    // We do not push a second page_view here.
 
-  // Event 2: apply_click
-  document.querySelectorAll('.apply-btn').forEach(function(button) {
-    button.addEventListener('click', function() {
-      selectedJob = button.getAttribute('data-job');
+    // Event 2: apply_click
+    document.querySelectorAll('.apply-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        selectedJob = button.getAttribute('data-job');
 
-      document.getElementById('selected-job').textContent =
-        'Selected role: ' + selectedJob;
+        // Update the selected role
+        document.getElementById('selected-job').textContent =
+          'Selected role: ' + selectedJob;
 
-      // Show the application form
-      document.getElementById('application').hidden = false;
+        // Clear any previous form values
+        document.getElementById('demo-form').reset();
 
-      // Reset all fields whenever a new job is selected
-      document.getElementById('demo-form').reset();
+        // Show the form and hide any previous success message
+        document.getElementById('application').hidden = false;
+        document.getElementById('demo-form').style.display = 'block';
+        document.getElementById('success').style.display = 'none';
 
-      // Hide any previous success message
-      document.getElementById('success').style.display = 'none';
+        // Send only the event name and job title to GTM
+        window.dataLayer.push({
+          event: 'apply_click',
+          job_title: selectedJob
+        });
 
-      // Track the Apply click
-      window.dataLayer.push({
-        event: 'apply_click',
-        job_title: selectedJob
-      });
-
-      document.getElementById('application').scrollIntoView({
-        behavior: 'smooth'
+        document.getElementById('application').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       });
     });
-  });
 
-  // Event 3: application_success
-  document.getElementById('demo-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+    // Event 3: application_success
+    document.getElementById('demo-form').addEventListener(
+      'submit',
+      function(event) {
+        event.preventDefault();
 
-    if (!selectedJob || !this.checkValidity()) {
-      this.reportValidity();
-      return;
-    }
+        // Do not track success if no job was selected
+        if (!selectedJob) {
+          return;
+        }
 
-    // Track success without sending personal details
-    window.dataLayer.push({
-      event: 'application_success',
-      job_title: selectedJob
-    });
+        // Browser validation handles required fields and email format.
+        // Never include form values in the analytics event.
+        window.dataLayer.push({
+          event: 'application_success',
+          job_title: selectedJob
+        });
 
-    // Display confirmation
-    document.getElementById('success').style.display = 'block';
+        // Show success and hide the form to prevent another submission
+        document.getElementById('success').style.display = 'block';
+        this.reset();
+        this.style.display = 'none';
+      }
+    );
+  </script>
 
-    // Clear all form fields
-    this.reset();
-  });
-</script>
 </body>
 </html>
