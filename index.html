@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerStart | Find Your Next Role</title>
+  <meta name="description" content="Explore demo job opportunities and try our recruitment application journey.">
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MWSMRSR8');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      color: #1f2937; background: #f5f7fb; line-height: 1.6;
+    }
+    header {
+      background: #173b67; color: white;
+      padding: 22px 7%; display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+    }
+    header h2 { margin: 0; }
+    header span { font-size: 14px; }
+    main { max-width: 950px; margin: 38px auto; padding: 0 18px; }
+    .hero { text-align: center; margin-bottom: 32px; }
+    .hero h1 { font-size: 34px; margin-bottom: 8px; }
+    .hero p { color: #596579; }
+    .jobs { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; }
+    .job, .application {
+      background: white; padding: 24px; border-radius: 12px;
+      border: 1px solid #e1e7f0; box-shadow: 0 3px 12px #1725540a;
+    }
+    .job h3 { margin-top: 0; }
+    .tag {
+      display: inline-block; background: #e8f0ff; color: #173b67;
+      border-radius: 20px; padding: 4px 10px; font-size: 12px;
+    }
+    button {
+      background: #1763c6; color: white; border: 0;
+      border-radius: 6px; padding: 11px 18px; cursor: pointer;
+      font-size: 15px; margin-top: 12px;
+    }
+    button:hover { background: #124c98; }
+    .application { margin-top: 26px; }
+    label { display: block; margin-top: 12px; font-weight: bold; }
+    select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #cbd5e1; border-radius: 6px; }
+    #success { display: none; background: #e7f8ed; padding: 14px; border-radius: 6px; margin-top: 15px; }
+    .note { font-size: 13px; color: #64748b; }
+    footer { text-align: center; padding: 25px; color: #64748b; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWSMRSR8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header>
+    <h2>CareerStart</h2>
+    <span>Recruitment Analytics Demo</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Find Your Next Opportunity</h1>
+      <p>Explore sample roles and try our demo application process.</p>
+    </section>
+
+    <section class="jobs" aria-label="Job listings">
+      <article class="job">
+        <span class="tag">Entry Level</span>
+        <h3>Data Analyst Intern</h3>
+        <p>Work with data, SQL, spreadsheets and reports to uncover useful insights.</p>
+        <p><strong>Location:</strong> Bengaluru / Remote</p>
+        <button class="apply-btn" data-job="Data Analyst Intern">Apply Now</button>
+      </article>
+
+      <article class="job">
+        <span class="tag">Entry Level</span>
+        <h3>Business Analyst Trainee</h3>
+        <p>Help teams understand requirements and improve everyday business processes.</p>
+        <p><strong>Location:</strong> Bengaluru / Hybrid</p>
+        <button class="apply-btn" data-job="Business Analyst Trainee">Apply Now</button>
+      </article>
+    </section>
+
+    <section class="application" id="application">
+      <h2>Demo Application</h2>
+      <p id="selected-job">Choose a job above to begin.</p>
+      <p class="note">This is a demonstration only. Do not enter your name, email, phone number or other personal information.</p>
+
+      <form id="demo-form">
+        <label for="role">Select a role</label>
+        <select id="role" required>
+          <option value="">Choose a role</option>
+          <option>Data Analyst Intern</option>
+          <option>Business Analyst Trainee</option>
+        </select>
+        <button type="submit">Submit Demo Application</button>
+      </form>
+
+      <div id="success" role="status">
+        <strong>Demo application successful!</strong>
+        <p>Your sample application journey is complete. No personal data was collected.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Portfolio project — website activity is measured for an analytics demonstration.</footer>
+
+  <script>
+    // Track which job's Apply button was clicked.
+    document.querySelectorAll('.apply-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var job = button.getAttribute('data-job');
+        document.getElementById('role').value = job;
+        document.getElementById('selected-job').textContent =
+          'Applying for: ' + job;
+        document.getElementById('application').scrollIntoView({ behavior: 'smooth' });
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'apply_click',
+          job_title: job
+        });
+      });
+    });
+
+    // Track success only after the demo form is submitted validly.
+    document.getElementById('demo-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var job = document.getElementById('role').value;
+      if (!job) return;
+
+      document.getElementById('success').style.display = 'block';
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'application_success',
+        job_title: job
+      });
+    });
+  </script>
+</body>
+</html>
