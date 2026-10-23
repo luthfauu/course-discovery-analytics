@@ -230,8 +230,13 @@
         document.getElementById('selected-job').textContent =
           'Selected role: ' + selectedJob;
 
-        document.getElementById('application').hidden = false;
-        document.getElementById('success').style.display = 'none';
+      document.getElementById('application').hidden = false;
+
+// Clear any previously entered details
+document.getElementById('demo-form').reset();
+
+// Hide the previous success message
+document.getElementById('success').style.display = 'none';
 
         window.dataLayer.push({
           event: 'apply_click',
@@ -254,7 +259,10 @@
       }
 
       // Do not send names, email addresses or phone numbers to analytics.
-      document.getElementById('success').style.display = 'block';
+document.getElementById('success').style.display = 'block';
+
+// Clear the form after a successful submission
+document.getElementById('demo-form').reset();
 
       window.dataLayer.push({
         event: 'application_success',
