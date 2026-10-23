@@ -220,55 +220,59 @@
   <script>
     window.dataLayer = window.dataLayer || [];
 
-    var selectedJob = '';
 
-    // Event 2: apply_click
-    document.querySelectorAll('.apply-btn').forEach(function(button) {
-      button.addEventListener('click', function() {
-        selectedJob = button.getAttribute('data-job');
+  var selectedJob = '';
 
-        document.getElementById('selected-job').textContent =
-          'Selected role: ' + selectedJob;
+  // Event 2: apply_click
+  document.querySelectorAll('.apply-btn').forEach(function(button) {
+    button.addEventListener('click', function() {
+      selectedJob = button.getAttribute('data-job');
 
+      document.getElementById('selected-job').textContent =
+        'Selected role: ' + selectedJob;
+
+      // Show the application form
       document.getElementById('application').hidden = false;
 
-// Clear any previously entered details
-document.getElementById('demo-form').reset();
+      // Reset all fields whenever a new job is selected
+      document.getElementById('demo-form').reset();
 
-// Hide the previous success message
-document.getElementById('success').style.display = 'none';
+      // Hide any previous success message
+      document.getElementById('success').style.display = 'none';
 
-        window.dataLayer.push({
-          event: 'apply_click',
-          job_title: selectedJob
-        });
-
-        document.getElementById('application').scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Event 3: application_success
-    document.getElementById('demo-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      if (!selectedJob || !this.checkValidity()) {
-        this.reportValidity();
-        return;
-      }
-
-      // Do not send names, email addresses or phone numbers to analytics.
-document.getElementById('success').style.display = 'block';
-
-// Clear the form after a successful submission
-document.getElementById('demo-form').reset();
-
+      // Track the Apply click
       window.dataLayer.push({
-        event: 'application_success',
+        event: 'apply_click',
         job_title: selectedJob
       });
+
+      document.getElementById('application').scrollIntoView({
+        behavior: 'smooth'
+      });
     });
-  </script>
+  });
+
+  // Event 3: application_success
+  document.getElementById('demo-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (!selectedJob || !this.checkValidity()) {
+      this.reportValidity();
+      return;
+    }
+
+    // Track success without sending personal details
+    window.dataLayer.push({
+      event: 'application_success',
+      job_title: selectedJob
+    });
+
+    // Display confirmation
+    document.getElementById('success').style.display = 'block';
+
+    // Clear all form fields
+    this.reset();
+  });
+</script>
 </body>
 </html>
